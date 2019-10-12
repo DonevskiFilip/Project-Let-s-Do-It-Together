@@ -1,5 +1,6 @@
 let logInHtmlRender = document.getElementById("logIn");
 let homepageHtmlRender = document.getElementById("homePage");
+let currentUser;
 
 // API DATA SECTION & ARRAYs
 
@@ -30,6 +31,20 @@ function getMailsFromUsers() {
   });
 }
 
+
+// / TODO This is calling on two places with different css style need to be checked
+function createEventInputs() {
+  return `<div>
+    <input type="text" />Event Name
+    <textarea name="" id="" cols="30" rows="10">Description</textarea>
+    <input type="date" />Event Start <input type="date" />Event End
+    <input type="text" />Event Location <input type="text" />Departure
+    Location 
+    <input type="text" />Event Creator
+    <button>Create</button>
+    </div>`;
+}
+
 function RenderLogInPage() {
   logInHtmlRender.innerHTML = `
        <div>
@@ -55,7 +70,6 @@ function userDataApiCall() {
   return response;
 }
 //Get Buttons By ID section
-
 let logInBtn = document.getElementById("LogInBtn");
 
 // Get All Input Values section
@@ -79,16 +93,23 @@ logInBtn.addEventListener("click", async function() {
   );
   if (trueUser !== undefined && trueUser !== null) {
     console.log("Loged IN");
+    currentUser = trueUser;
+    console.log("this is currnetUser" + currentUser.email);
     logInHtmlRender.style.display = "none";
     renderHomePage(trueUser);
   }
   console.log("Wrong");
 });
 
-// TODO Change EVENTS INFO
+// TODO Change EVENTS INFO!!!!!
+// TO DO (for users created events remove join button or if events spots are full remove join button)
 function renderEventsContainer() {
+  let eventContainer = document.getElementById("EventsContainer");
+  // createEventInputs(eventContainer);
+
+  eventContainer.innerHTML = createEventInputs();
   EventArray.forEach(element => {
-    `${(document.getElementById("EventsContainer").innerHTML += `<div>
+    `${(eventContainer.innerHTML += `<div>
         <div id="eventName">${element.eventName}</div>
         <div id="eventStart">${element.startDate}</div>
         <div id="eventEnd">${element.endDate}</div>
@@ -96,8 +117,16 @@ function renderEventsContainer() {
         <div id="eventSpots">${element.eventSpots}</div>
         <div id="eventLocation">${element.eventLocation}</div>
         <div id="eventCreator">${element.eventCreator}</div>
-        <button>JOIN</button>
+        <button value=${element.eventID}>JOIN</button>
         </div>`)}`;
+  });
+
+  // EventLIstener for JOIN EVENT BUTTON
+  let joinEventBtn = document.getElementById("EventsContainer");
+  joinEventBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    let eventClicked = e.target.getAttribute("value");
+    currentUser.goingeventID = eventClicked;
   });
 }
 
@@ -109,6 +138,7 @@ function renderHomePage(user) {
         <button id="profileBtn">${user.firstName}</button>
         <button id="logOutBtn">Log Out</button>
     </div>
+    <div id=>
     <div id="EventsContainer">
     </div>
 </div>`;
