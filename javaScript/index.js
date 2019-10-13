@@ -1,6 +1,18 @@
 let logInHtmlRender = document.getElementById("logIn");
 let homepageHtmlRender = document.getElementById("homePage");
+let profilePageHtmlRender = document.getElementById("profilePage");
 let currentUser;
+let eventContainerHomePage;
+
+// ALL BUTTONS DEFINE HERE
+
+let myProfileBtn;
+let lotOutBtn;
+let homePageBtn;
+let joinEventBtn;
+let logInBtn;
+let reatedEventsBtn;
+let goingToEventsBtn;
 
 // API DATA SECTION & ARRAYs
 
@@ -31,18 +43,107 @@ function getMailsFromUsers() {
   });
 }
 
+function createProfilePageDivs(userId) {
+  eventContainerHomePage.style.display = "none";
+  let showUserProfile = userArray.find(x => x.userId === userId);
+
+  profilePageHtmlRender.innerHTML = `<div id="profilePageConteiner">
+         <div id="profilPhotoDiv">
+           <img src="${showUserProfile.profilePhoto}" alt="" />
+        </div>
+        <div id="userInfoDiv">
+          <div id="fullName">
+             <h3>${showUserProfile.firstName} ${showUserProfile.lastName}</h3>
+           </div>
+          <div id="birthInfoDiv">${showUserProfile.birthday}</div>
+          <div id="otherInfoDiv">
+            <div>Region:${showUserProfile.region}</div>
+            <div>Gender:${showUserProfile.gender}</div>
+            <div>Email: ${showUserProfile.email}</div>
+          </div>
+        </div>
+        <div id="EventsInfoDiv">
+        <div id="createdEvent">Created Events</div>
+        <div id="goingToEvent">Going To Event</div>
+        </div>
+     </div>`;
+}
 
 // / TODO This is calling on two places with different css style need to be checked
-function createEventInputs() {
-  return `<div>
-    <input type="text" />Event Name
-    <textarea name="" id="" cols="30" rows="10">Description</textarea>
-    <input type="date" />Event Start <input type="date" />Event End
-    <input type="text" />Event Location <input type="text" />Departure
+function createEventInputs(
+  neededDiv,
+  nameVal,
+  textAreaVal,
+  startDateVal,
+  endDateVal,
+  eventLocationVal,
+  eventDepartureVal,
+  eventSpotsVal
+) {
+  neededDiv.innerHTML = `<div>
+    <input type="text" id=${nameVal}Id  />Event Name
+    <textarea id=${textAreaVal}Id cols="30" rows="10">Description</textarea>
+    <input id=${startDateVal}Id type="date" />Event Start
+    <input id=${endDateVal}Id type="date" />Event End
+    <input id=${eventLocationVal}Id type="text" />Event Location 
+    <input id=${eventDepartureVal}Id type="text" />Departure
     Location 
-    <input type="text" />Event Creator
+    <input id=${eventSpotsVal}Id type="number">Event spots
     <button>Create</button>
     </div>`;
+}
+
+function createEvent(
+  name,
+  description,
+  eventStart,
+  eventEnd,
+  eventLocation,
+  departureLocation,
+  eventSpots
+) {
+  let todayDay = new Date();
+  if (isNaN(name) === false || name === null || name.trim() === "") {
+    alert("You didn`t enter valid name");
+    return false;
+  }
+  if (
+    isNaN(description) === false ||
+    description === null ||
+    description.trim() === ""
+  ) {
+    alert("You didn`t enter description");
+    return false;
+  }
+  if (eventStart < todayDay) {
+    alert(`Your event need to start form ${todayDay}`);
+    return false;
+  }
+  if (eventEnd < eventStart) {
+    alert(`Event end date can be beffor start date`);
+    return false;
+  }
+  if (
+    isNaN(eventLocation) === false ||
+    eventLocation === null ||
+    eventLocation.trim() === ""
+  ) {
+    alert("Need to enter event Location");
+    return false;
+  }
+  if (
+    isNaN(departureLocation) === false ||
+    departureLocation === null ||
+    departureLocation.trim() === ""
+  ) {
+    alert("Need to enter event Departure Location");
+    return false;
+  }
+  if (isNaN(eventSpots) === true || departureLocation === null) {
+    alert("Need to enter event spots");
+    return false;
+  }
+  return true;
 }
 
 function RenderLogInPage() {
@@ -70,7 +171,7 @@ function userDataApiCall() {
   return response;
 }
 //Get Buttons By ID section
-let logInBtn = document.getElementById("LogInBtn");
+logInBtn = document.getElementById("LogInBtn");
 
 // Get All Input Values section
 
@@ -103,13 +204,19 @@ logInBtn.addEventListener("click", async function() {
 
 // TODO Change EVENTS INFO!!!!!
 // TO DO (for users created events remove join button or if events spots are full remove join button)
-function renderEventsContainer() {
-  let eventContainer = document.getElementById("EventsContainer");
-  // createEventInputs(eventContainer);
-
-  eventContainer.innerHTML = createEventInputs();
+async function renderEventsContainer() {
+  createEventInputs(
+    eventContainerHomePage,
+    "homePageEventName",
+    "homePageTextArea",
+    "homePageStartDate",
+    "homePageEndDate",
+    "homePageLocation",
+    "homePageDeparture",
+    "homePageSpots"
+  );
   EventArray.forEach(element => {
-    `${(eventContainer.innerHTML += `<div>
+    `${(eventContainerHomePage.innerHTML += `<div>
         <div id="eventName">${element.eventName}</div>
         <div id="eventStart">${element.startDate}</div>
         <div id="eventEnd">${element.endDate}</div>
@@ -122,7 +229,7 @@ function renderEventsContainer() {
   });
 
   // EventLIstener for JOIN EVENT BUTTON
-  let joinEventBtn = document.getElementById("EventsContainer");
+  joinEventBtn = document.getElementById("EventsContainer");
   joinEventBtn.addEventListener("click", function(e) {
     e.preventDefault();
     let eventClicked = e.target.getAttribute("value");
@@ -138,10 +245,13 @@ function renderHomePage(user) {
         <button id="profileBtn">${user.firstName}</button>
         <button id="logOutBtn">Log Out</button>
     </div>
-    <div id=>
     <div id="EventsContainer">
     </div>
 </div>`;
-
+  eventContainerHomePage = document.getElementById("EventsContainer");
+  myProfileBtn = document.getElementById("profileBtn");
   renderEventsContainer();
+  myProfileBtn.addEventListener("click", function() {
+    createProfilePageDivs(currentUser.userId);
+  });
 }
