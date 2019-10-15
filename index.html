@@ -7,23 +7,53 @@
   </head>
   <body>
     <div id="logIn">
-      <div id="registrationSection">
-        <input type="text" id="regFirstName">
-        <input type="text" id="regLastname">  
-        <input type="text" id="regEmail">
-        <input type="text" id="regPassword">
-        <input type="text" id="regConfirmPassword">
-        <input type="text" id="regRegion">
-        <input type="text" id="regGender">
-        <input type="date" name="userBirthDay" id="regDate">
+      <div>
+        <p>Username</p>
+        <input type="text" id="usernameInput" />
+        <p>Password</p>
+        <input type="text" id="passwordInput" />
+        <button id="LogInBtn">log In</button>
+      </div>
+      <div id="registrationSectionDiv">
+        First Name:
+        <input type="text" id="regFirstName" required /> Lastname:<input
+          type="text"
+          id="regLastname"
+          required
+        />
+        Email:<input type="text" id="regEmail" required /> Password:
+        <input type="text" id="regPassword" required /> Confirm Password:<input
+          type="text"
+          id="regConfirmPassword"
+          required
+        />
+        Region:<input type="text" id="regRegion" required /> Gender:<input
+          type="text"
+          id="regGender"
+          required
+        />
+        Date of Birth:<input
+          type="date"
+          name="userBirthDay"
+          id="regDate"
+          required
+        />
+        <button id="registrationBtn">Register</button>
       </div>
     </div>
 
-    <div id="homePage"></div>
-
-    <div id="profilePage">
-
+    <div id="homePage">
+      <div>
+        <div id="navHeader">
+          <div id="homeBtn">Home</div>
+          <div id="profileBtn">userName</div>
+          <div id="logOutBtn">Log Out</div>
+        </div>
+        <div id="EventsContainer"></div>
+      </div>
     </div>
+
+    <div id="profilePage"></div>
   </body>
   <script src="javaScript/index.js"></script>
 </html>

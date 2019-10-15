@@ -1,96 +1,219 @@
+class User {
+  constructor(
+    firstName,
+    lastName,
+    email,
+    password,
+    region,
+    gender,
+    birthDay,
+    profilePhoto
+  ) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.password = password;
+    this.region = region;
+    this.gender = gender;
+    this.birthday = birthDay;
+    this.createdID = null;
+    this.goingeventID = null;
+    this.userId = GeneratedID();
+    this.profilePhoto = profilePhoto;
+  }
+}
+
+class Event {
+  constructor(
+    eventname,
+    eventdescription,
+    startdate,
+    enddate,
+    eventlocation,
+    departurelocation,
+    eventspots,
+    eventcreator
+  ) {
+    this.eventName = eventname;
+    this.eventDescription = eventdescription;
+    this.startDate = startdate;
+    this.endDate = enddate;
+    this.eventLocation = eventlocation;
+    this.departureLocation = departurelocation;
+    this.eventSpots = eventspots;
+    this.eventId = GeneratedID();
+    this.eventCreator = eventcreator;
+  }
+}
+
 let logInHtmlRender = document.getElementById("logIn");
 let homepageHtmlRender = document.getElementById("homePage");
 let profilePageHtmlRender = document.getElementById("profilePage");
 let currentUser;
-let eventContainerHomePage;
+let trueUser;
+let eventContainerHomePage = document.getElementById("EventsContainer");
+let navHeader = document.getElementById("navHeader");
 
 // ALL BUTTONS DEFINE HERE
 
-let myProfileBtn;
+let myProfileBtn = document.getElementById("profileBtn");
+
 let lotOutBtn;
-let homePageBtn;
-let joinEventBtn;
-let logInBtn;
-let reatedEventsBtn;
+let homePageBtn = document.getElementById("homeBtn");
+let joinEventBtn = document.getElementById("EventsContainer");
+let logInBtn = document.getElementById("LogInBtn");
+let createdEventsBtn;
 let goingToEventsBtn;
 
-// API DATA SECTION & ARRAYs
+// Log In And Registration HTML ELEMENTS
+let logInUsernameInput = document.getElementById("usernameInput");
+let logInPasswordInput = document.getElementById("passwordInput");
+let registrationFirstName = document.getElementById("regFirstName");
+let registrationLastname = document.getElementById("regLastname");
+let registrationEmail = document.getElementById("regEmail");
+let registrationPassword = document.getElementById("regPassword");
+let registrationConfPassword = document.getElementById("regConfirmPassword");
+let registrationRegion = document.getElementById("regRegion");
+let registrationGender = document.getElementById("regGender");
+let registrationBirthday = document.getElementById("regDate");
+let registrationBtn = document.getElementById("registrationBtn");
 
+// PROFILE PAGE HTML ELEMENTS
+function generateProfilePage(user) {
+  profilePageHtmlRender.style.display = "flex";
+  profilePageHtmlRender.innerHTML = `<div id="profilePageConteiner">
+  <div id="profilPhotoDiv">
+    <img src="${user.profilePhoto}" alt="" />
+  </div>
+  <div id="userInfoDiv">
+    <div id="fullName">
+      <h3>${user.firstName} ${user.lastName}</h3>
+    </div>
+    <div id="birthInfoDiv">${user.birthday}</div>
+    <div id="otherInfoDiv">
+      <div>Region:${user.region}</div>
+      <div>Gender:${user.gender}</div>
+      <div>Email: ${user.email}</div>
+    </div>
+  </div>
+  <div id="EventsInfoDiv">
+    <div id="createdEvent">Created Events</div>
+    <div id="goingToEvent">Going To Event</div>
+  </div>
+</div>`;
+  createdEventsBtn = document.getElementById("createdEvent");
+  goingToEventsBtn = document.getElementById("goingToEvent");
+
+}
+
+//DOM MNIPULATION HIDE & SHOW
+homepageHtmlRender.style.display = "none";
+profilePageHtmlRender.style.display = "none";
+
+// API DATA SECTION & ARRAYs
 let userArray = [];
 let EventArray = [];
 
-//Global Functions
-//TODO SORT BY EVENT CREATION DATE // CHANGES
-function sortEventsArrays(events) {
-  return events.sort(function(parametarOne, parametarTwo) {
-    let itemOne = parametarOne.eventName;
-    let itemTwo = parametarTwo.eventName;
+//API Call function
+function userDataApiCall() {
+  let response = fetch(
+    "https://raw.githubusercontent.com/DonevskiFilip/PublicAPI/master/LetsDoItApi.json"
+  )
+    .then(x => x.json())
+    .then(x => {
+      return x;
+    });
+  return response;
+}
+async function DataBaseCall() {
+  let response = await userDataApiCall();
+  userArray = response.Users;
+  EventArray = sortEventsArrays(response.Events);
+}
+DataBaseCall();
 
-    if (itemOne < itemTwo) {
-      return -1;
+// Front Page Buttons LogIn / Register
+logInBtn.addEventListener("click", async function() {
+  getMailsFromUsers();
+  userArray.find(x => {
+    if (
+      x.email === logInUsernameInput.value &&
+      x.password === logInPasswordInput.value
+    ) {
+      trueUser = x;
     }
-    if (itemOne > itemTwo) {
-      return 1;
-    }
-
-    return 0;
   });
-}
 
-function getMailsFromUsers() {
-  userArray.forEach(element => {
-    console.log(element.email);
-  });
-}
+  if (trueUser !== undefined && trueUser !== null) {
+    currentUser = trueUser;
+    logInHtmlRender.style.display = "none";
+    homepageHtmlRender.style.display = "flex";
+    renderEventsContainer();
+    myProfileBtn.innerHTML = `${currentUser.firstName} ${currentUser.lastName}`;
+  }
+  console.log("Wrong");
+});
 
-function createProfilePageDivs(userId) {
-  eventContainerHomePage.style.display = "none";
-  let showUserProfile = userArray.find(x => x.userId === userId);
+registrationBtn.addEventListener("click", function() {
+  validationAndRegisterUser(
+    registrationFirstName.value,
+    registrationLastname.value,
+    registrationEmail.value,
+    registrationPassword.value,
+    registrationConfPassword.value,
+    registrationRegion.value,
+    registrationGender.value,
+    registrationBirthday.value,
+    null
+  );
+});
 
-  profilePageHtmlRender.innerHTML = `<div id="profilePageConteiner">
-         <div id="profilPhotoDiv">
-           <img src="${showUserProfile.profilePhoto}" alt="" />
-        </div>
-        <div id="userInfoDiv">
-          <div id="fullName">
-             <h3>${showUserProfile.firstName} ${showUserProfile.lastName}</h3>
-           </div>
-          <div id="birthInfoDiv">${showUserProfile.birthday}</div>
-          <div id="otherInfoDiv">
-            <div>Region:${showUserProfile.region}</div>
-            <div>Gender:${showUserProfile.gender}</div>
-            <div>Email: ${showUserProfile.email}</div>
-          </div>
-        </div>
-        <div id="EventsInfoDiv">
-        <div id="createdEvent">Created Events</div>
-        <div id="goingToEvent">Going To Event</div>
-        </div>
-     </div>`;
-}
-
-// / TODO This is calling on two places with different css style need to be checked
-function createEventInputs(
-  neededDiv,
-  nameVal,
-  textAreaVal,
-  startDateVal,
-  endDateVal,
-  eventLocationVal,
-  eventDepartureVal,
-  eventSpotsVal
+function validationAndRegisterUser(
+  firstName,
+  lastName,
+  email,
+  password,
+  confirmPassword,
+  region,
+  gender,
+  birthDay,
+  profilePhoto
 ) {
-  neededDiv.innerHTML = `<div>
-    <input type="text" id=${nameVal}Id  />Event Name
-    <textarea id=${textAreaVal}Id cols="30" rows="10">Description</textarea>
-    <input id=${startDateVal}Id type="date" />Event Start
-    <input id=${endDateVal}Id type="date" />Event End
-    <input id=${eventLocationVal}Id type="text" />Event Location 
-    <input id=${eventDepartureVal}Id type="text" />Departure
-    Location 
-    <input id=${eventSpotsVal}Id type="number">Event spots
-    <button>Create</button>
-    </div>`;
+  debugger;
+  if (isNaN(firstName) === false) {
+    return true;
+  }
+  if (isNaN(lastName) === false) {
+    return true;
+  }
+  if (
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) === false ||
+    userArray.find(function(x) {
+      x.email === email;
+    }) != undefined
+  ) {
+    alert("Wrong Email");
+    return false;
+  }
+  if (password !== confirmPassword || password.length < 5) {
+    return false;
+  }
+  if (profilePhoto === null || profilePhoto === undefined) {
+    profilePhoto =
+      "https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwiznYj63pnlAhUSU1AKHcgLAREQjRx6BAgBEAQ&url=https%3A%2F%2Fthe-test-fun-for-friends.en.softonic.com%2Fiphone&psig=AOvVaw1OJld5-RtwhPQsGTP4AlHS&ust=1571073454890079";
+  }
+  let newUser = new User(
+    firstName,
+    lastName,
+    email,
+    password,
+    region,
+    gender,
+    birthDay,
+    profilePhoto
+  );
+  console.log(newUser.firstName);
+  userArray.push(newUser);
 }
 
 function createEvent(
@@ -146,75 +269,23 @@ function createEvent(
   return true;
 }
 
-function RenderLogInPage() {
-  logInHtmlRender.innerHTML = `
-       <div>
-          <p>Username</p>
-           <input type="text" id="usernameInput">
-           <p>Password</p>
-           <input type="text" id="passwordInput">
-           <button id="LogInBtn">log In</button>
-      </div>
-      `;
-}
-RenderLogInPage();
-
-//API Call function
-function userDataApiCall() {
-  let response = fetch(
-    "https://raw.githubusercontent.com/DonevskiFilip/PublicAPI/master/LetsDoItApi.json"
-  )
-    .then(x => x.json())
-    .then(x => {
-      return x;
-    });
-  return response;
-}
-//Get Buttons By ID section
-logInBtn = document.getElementById("LogInBtn");
-
-// Get All Input Values section
-
-let logInUsernameInput = document.getElementById("usernameInput");
-let logInPasswordInput = document.getElementById("passwordInput");
-
-//Buttons event Listeners
-
-logInBtn.addEventListener("click", async function() {
-  let apiCall = await userDataApiCall();
-  userArray = apiCall.Users;
-  EventArray = sortEventsArrays(apiCall.Events);
-
-  getMailsFromUsers();
-
-  let trueUser = userArray.find(
-    x =>
-      x.email === logInUsernameInput.value &&
-      x.password === logInPasswordInput.value
-  );
-  if (trueUser !== undefined && trueUser !== null) {
-    console.log("Loged IN");
-    currentUser = trueUser;
-    console.log("this is currnetUser" + currentUser.email);
-    logInHtmlRender.style.display = "none";
-    renderHomePage(trueUser);
-  }
-  console.log("Wrong");
+// HOME page Buttons HOME / myProfile / Log out
+myProfileBtn.addEventListener("click", function() {
+  eventContainerHomePage.style.display = "none";
+  navHeader.style.display = "flex";
+  generateProfilePage(currentUser);
+});
+homePageBtn.addEventListener("click", function() {
+  profilePageHtmlRender.style.display = "none";
+  homepageHtmlRender.style.display = "flex";
+  eventContainerHomePage.style.display = "flex";
+  renderEventsContainer();
 });
 
 // TODO Change EVENTS INFO!!!!!
 // TO DO (for users created events remove join button or if events spots are full remove join button)
-async function renderEventsContainer() {
-  createEventInputs(
-    eventContainerHomePage,
-    "homePageEventName",
-    "homePageTextArea",
-    "homePageStartDate",
-    "homePageEndDate",
-    "homePageLocation",
-    "homePageDeparture",
-    "homePageSpots"
-  );
+function renderEventsContainer() {
+  eventContainerHomePage.innerHTML = "";
   EventArray.forEach(element => {
     `${(eventContainerHomePage.innerHTML += `<div>
         <div id="eventName">${element.eventName}</div>
@@ -227,31 +298,52 @@ async function renderEventsContainer() {
         <button value=${element.eventID}>JOIN</button>
         </div>`)}`;
   });
+}
+// EventLIstener for JOIN EVENT BUTTON
+joinEventBtn.addEventListener("click", function(e) {
+  e.preventDefault();
+  let eventClicked = e.target.getAttribute("value");
+  if (
+    currentUser.goingeventID !== null ||
+    currentUser.goingeventID !== undefined
+  ) {
+    return alert("You can attend on one event");
+  }
+  currentUser.goingeventID = eventClicked;
+});
 
-  // EventLIstener for JOIN EVENT BUTTON
-  joinEventBtn = document.getElementById("EventsContainer");
-  joinEventBtn.addEventListener("click", function(e) {
-    e.preventDefault();
-    let eventClicked = e.target.getAttribute("value");
-    currentUser.goingeventID = eventClicked;
+//HELPERS FUNCTIONS
+//TODO SORT BY EVENT CREATION DATE // CHANGES
+function sortEventsArrays(events) {
+  return events.sort(function(parametarOne, parametarTwo) {
+    let itemOne = parametarOne.eventName;
+    let itemTwo = parametarTwo.eventName;
+
+    if (itemOne < itemTwo) {
+      return -1;
+    }
+    if (itemOne > itemTwo) {
+      return 1;
+    }
+
+    return 0;
   });
 }
 
-function renderHomePage(user) {
-  homepageHtmlRender.innerHTML = `
-  <div>
-    <div>
-        <button id="homeBtn">Home</button>
-        <button id="profileBtn">${user.firstName}</button>
-        <button id="logOutBtn">Log Out</button>
-    </div>
-    <div id="EventsContainer">
-    </div>
-</div>`;
-  eventContainerHomePage = document.getElementById("EventsContainer");
-  myProfileBtn = document.getElementById("profileBtn");
-  renderEventsContainer();
-  myProfileBtn.addEventListener("click", function() {
-    createProfilePageDivs(currentUser.userId);
+//Delete When YOU finish
+function getMailsFromUsers() {
+  userArray.forEach(element => {
+    console.log(element.email);
   });
+}
+
+function GeneratedID() {
+  let idLength = 5;
+  let char = "qwertyuiopasdfghjklzxcvbnm1234567890".split("");
+  let returnId = "";
+
+  for (i = 0; i < idLength; i++) {
+    returnId += char[Math.floor(Math.random() * char.length)];
+  }
+  return returnId;
 }
