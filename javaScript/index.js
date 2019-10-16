@@ -53,6 +53,9 @@ let currentUser;
 let trueUser;
 let eventContainerHomePage = document.getElementById("EventsContainer");
 let navHeader = document.getElementById("navHeader");
+let displayProfileEvents;
+let eventsInfoDiv;
+let userListDiv = document.getElementById("usersList");
 
 // ALL BUTTONS DEFINE HERE
 
@@ -78,7 +81,7 @@ let registrationGender = document.getElementById("regGender");
 let registrationBirthday = document.getElementById("regDate");
 let registrationBtn = document.getElementById("registrationBtn");
 
-// PROFILE PAGE HTML ELEMENTS
+// FUNCTIONS FOR AUTO GENERATED DIVS
 function generateProfilePage(user) {
   profilePageHtmlRender.style.display = "flex";
   profilePageHtmlRender.innerHTML = `<div id="profilePageConteiner">
@@ -97,13 +100,64 @@ function generateProfilePage(user) {
     </div>
   </div>
   <div id="EventsInfoDiv">
-    <div id="createdEvent">Created Events</div>
-    <div id="goingToEvent">Going To Event</div>
+    <div>
+      <div id="createdEvent" value = "created">Created Events</div>
+      <div id="goingToEvent" value = "going">Going To Event</div>
+    </div>
+    <div id="prfileDisplayEventsDiv">
+    </div>
   </div>
 </div>`;
   createdEventsBtn = document.getElementById("createdEvent");
   goingToEventsBtn = document.getElementById("goingToEvent");
+  displayProfileEvents = document.getElementById("prfileDisplayEventsDiv");
+  eventsInfoDiv = document.getElementById("EventsInfoDiv");
 
+  eventsInfoDiv.addEventListener("click", function(e) {
+    e.preventDefault();
+    debugger;
+    let clickTarget = e.target.getAttribute("value");
+    displayProfileEventsInfo(clickTarget, currentUser);
+  });
+}
+function displayProfileEventsInfo(targetValue, userId) {
+  displayProfileEvents.innerHTML = "";
+  debugger;
+  if (targetValue === "created") {
+    let userEvents = EventArray.find(x => x.eventID === userId.createdID);
+    if (userEvents !== undefined) {
+      displayProfileEvents.innerHTML = `<div>
+      <div id="eventName">${userEvents.eventName}</div>
+      <div id="eventStart">${userEvents.startDate}</div>
+      <div id="eventEnd">${userEvents.endDate}</div>
+      <div id="eventDuration">${userEvents.eventName}</div>
+      <div id="eventSpots">${userEvents.eventSpots}</div>
+      <div id="eventLocation">${userEvents.eventLocation}</div>
+      <div id="eventCreator">${userEvents.eventCreator}</div>
+      </div>`;
+    }
+  }
+  if (targetValue === "going") {
+    displayProfileEvents.innerHTML = "";
+    let userEvents = EventArray.find(x => x.eventID === userId.goingeventID);
+    if (userEvents !== undefined) {
+      displayProfileEvents.innerHTML = `<div>
+      <div id="eventName">${userEvents.eventName}</div>
+      <div id="eventStart">${userEvents.startDate}</div>
+      <div id="eventEnd">${userEvents.endDate}</div>
+      <div id="eventDuration">${userEvents.eventName}</div>
+      <div id="eventSpots">${userEvents.eventSpots}</div>
+      <div id="eventLocation">${userEvents.eventLocation}</div>
+      <div id="eventCreator">${userEvents.eventCreator}</div>
+      </div>`;
+    }
+  }
+}
+function generateUserList(usersArray) {
+  userListDiv.innerHTML = "";
+  userArray.forEach(element => {
+    userListDiv.innerHTML += `<div>${element.firstName} ${element.lastName}</div>`;
+  });
 }
 
 //DOM MNIPULATION HIDE & SHOW
@@ -149,6 +203,8 @@ logInBtn.addEventListener("click", async function() {
     logInHtmlRender.style.display = "none";
     homepageHtmlRender.style.display = "flex";
     renderEventsContainer();
+    generateUserList(userArray);
+
     myProfileBtn.innerHTML = `${currentUser.firstName} ${currentUser.lastName}`;
   }
   console.log("Wrong");
@@ -273,13 +329,16 @@ function createEvent(
 myProfileBtn.addEventListener("click", function() {
   eventContainerHomePage.style.display = "none";
   navHeader.style.display = "flex";
+  userListDiv.style.display = "none";
   generateProfilePage(currentUser);
 });
 homePageBtn.addEventListener("click", function() {
   profilePageHtmlRender.style.display = "none";
   homepageHtmlRender.style.display = "flex";
   eventContainerHomePage.style.display = "flex";
+  userListDiv.style.display = "flex";
   renderEventsContainer();
+  generateUserList(userArray);
 });
 
 // TODO Change EVENTS INFO!!!!!
