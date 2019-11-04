@@ -1,0 +1,12 @@
+C:\Users\User\Desktop\LDTWebAplication\LDTWebApplication\WebViewModels\obj\Debug\netstandard2.0\WebViewModels.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\LDTWebAplication\LDTWebApplication\WebViewModels\obj\Debug\netstandard2.0\WebViewModels.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\LDTWebAplication\LDTWebApplication\WebViewModels\obj\Debug\netstandard2.0\WebViewModels.AssemblyInfo.cs
+C:\Users\User\Desktop\LDTWebAplication\LDTWebApplication\WebViewModels\bin\Debug\netstandard2.0\WebViewModels.deps.json
+C:\Users\User\Desktop\LDTWebAplication\LDTWebApplication\WebViewModels\bin\Debug\netstandard2.0\WebViewModels.dll
+C:\Users\User\Desktop\LDTWebAplication\LDTWebApplication\WebViewModels\bin\Debug\netstandard2.0\WebViewModels.pdb
+C:\Users\User\Desktop\LDTWebAplication\LDTWebApplication\WebViewModels\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.dll
+C:\Users\User\Desktop\LDTWebAplication\LDTWebApplication\WebViewModels\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.xml
+C:\Users\User\Desktop\LDTWebAplication\LDTWebApplication\WebViewModels\obj\Debug\netstandard2.0\WebViewModels.csproj.CopyComplete
+C:\Users\User\Desktop\LDTWebAplication\LDTWebApplication\WebViewModels\obj\Debug\netstandard2.0\WebViewModels.dll
+C:\Users\User\Desktop\LDTWebAplication\LDTWebApplication\WebViewModels\obj\Debug\netstandard2.0\WebViewModels.pdb
+C:\Users\User\Desktop\LDTWebAplication\LDTWebApplication\WebViewModels\obj\Debug\netstandard2.0\WebViewModels.csprojAssemblyReference.cache

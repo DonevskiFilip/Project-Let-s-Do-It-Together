@@ -1,0 +1,15 @@
+﻿@model IEnumerable<WebViewModels.UserViewModel>
+@{
+    ViewData["Title"] = "GetAllUsers";
+}
+
+<h2>GetAllUsers</h2>
+
+<ol>
+    @foreach (WebViewModels.UserViewModel item in Model)
+    {
+        <li>@item.Firstname</li>
+        <li>@item.Lastname</li>
+        <li>@item.Address</li>
+    }
+</ol>
