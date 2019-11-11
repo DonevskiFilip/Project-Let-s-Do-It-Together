@@ -402,11 +402,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\WebViewModels\\WebViewModels.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\WebViewModels\\WebViewModels.csproj",
       "projectName": "WebViewModels",
-      "projectPath": "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\WebViewModels\\WebViewModels.csproj",
+      "projectPath": "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\WebViewModels\\WebViewModels.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\WebViewModels\\obj\\",
+      "outputPath": "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\WebViewModels\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",

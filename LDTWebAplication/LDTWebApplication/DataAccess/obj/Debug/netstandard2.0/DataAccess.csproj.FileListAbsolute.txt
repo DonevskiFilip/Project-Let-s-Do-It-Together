@@ -10,3 +10,15 @@ C:\Users\User\Desktop\LDTWebAplication\LDTWebApplication\DataAccess\obj\Debug\ne
 C:\Users\User\Desktop\LDTWebAplication\LDTWebApplication\DataAccess\bin\Debug\netstandard2.0\DomainModels.dll
 C:\Users\User\Desktop\LDTWebAplication\LDTWebApplication\DataAccess\bin\Debug\netstandard2.0\DomainModels.pdb
 C:\Users\User\Desktop\LDTWebAplication\LDTWebApplication\DataAccess\obj\Debug\netstandard2.0\DataAccess.csproj.CopyComplete
+C:\Users\User\Documents\ProjectLDT\LDTWebAplication\LDTWebApplication\DataAccess\bin\Debug\netstandard2.0\DataAccess.deps.json
+C:\Users\User\Documents\ProjectLDT\LDTWebAplication\LDTWebApplication\DataAccess\bin\Debug\netstandard2.0\DataAccess.dll
+C:\Users\User\Documents\ProjectLDT\LDTWebAplication\LDTWebApplication\DataAccess\bin\Debug\netstandard2.0\DataAccess.pdb
+C:\Users\User\Documents\ProjectLDT\LDTWebAplication\LDTWebApplication\DataAccess\bin\Debug\netstandard2.0\DomainModels.dll
+C:\Users\User\Documents\ProjectLDT\LDTWebAplication\LDTWebApplication\DataAccess\bin\Debug\netstandard2.0\DomainModels.pdb
+C:\Users\User\Documents\ProjectLDT\LDTWebAplication\LDTWebApplication\DataAccess\obj\Debug\netstandard2.0\DataAccess.csprojAssemblyReference.cache
+C:\Users\User\Documents\ProjectLDT\LDTWebAplication\LDTWebApplication\DataAccess\obj\Debug\netstandard2.0\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\ProjectLDT\LDTWebAplication\LDTWebApplication\DataAccess\obj\Debug\netstandard2.0\DataAccess.AssemblyInfoInputs.cache
+C:\Users\User\Documents\ProjectLDT\LDTWebAplication\LDTWebApplication\DataAccess\obj\Debug\netstandard2.0\DataAccess.AssemblyInfo.cs
+C:\Users\User\Documents\ProjectLDT\LDTWebAplication\LDTWebApplication\DataAccess\obj\Debug\netstandard2.0\DataAccess.csproj.CopyComplete
+C:\Users\User\Documents\ProjectLDT\LDTWebAplication\LDTWebApplication\DataAccess\obj\Debug\netstandard2.0\DataAccess.dll
+C:\Users\User\Documents\ProjectLDT\LDTWebAplication\LDTWebApplication\DataAccess\obj\Debug\netstandard2.0\DataAccess.pdb

@@ -12712,11 +12712,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\LDTWebApp\\LDTWebApp.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\LDTWebApp\\LDTWebApp.csproj",
       "projectName": "LDTWebApp",
-      "projectPath": "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\LDTWebApp\\LDTWebApp.csproj",
+      "projectPath": "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\LDTWebApp\\LDTWebApp.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\LDTWebApp\\obj\\",
+      "outputPath": "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\LDTWebApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -12737,17 +12737,17 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\DataAccess\\DataAccess.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\DataAccess\\DataAccess.csproj"
+            "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\DataAccess\\DataAccess.csproj": {
+              "projectPath": "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\DataAccess\\DataAccess.csproj"
             },
-            "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\DomainModels\\DomainModels.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\DomainModels\\DomainModels.csproj"
+            "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\DomainModels\\DomainModels.csproj": {
+              "projectPath": "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\DomainModels\\DomainModels.csproj"
             },
-            "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\Services\\Services.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\Services\\Services.csproj"
+            "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\Services\\Services.csproj": {
+              "projectPath": "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\Services\\Services.csproj"
             },
-            "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\WebViewModels\\WebViewModels.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\WebViewModels\\WebViewModels.csproj"
+            "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\WebViewModels\\WebViewModels.csproj": {
+              "projectPath": "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\WebViewModels\\WebViewModels.csproj"
             }
           }
         }

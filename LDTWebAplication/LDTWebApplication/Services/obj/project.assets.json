@@ -3331,11 +3331,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\Services\\Services.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\Services\\Services.csproj",
       "projectName": "Services",
-      "projectPath": "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\Services\\Services.csproj",
+      "projectPath": "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\Services\\Services.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\Services\\obj\\",
+      "outputPath": "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\Services\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -3356,11 +3356,11 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\DataAccess\\DataAccess.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\DataAccess\\DataAccess.csproj"
+            "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\DataAccess\\DataAccess.csproj": {
+              "projectPath": "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\DataAccess\\DataAccess.csproj"
             },
-            "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\WebViewModels\\WebViewModels.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\WebViewModels\\WebViewModels.csproj"
+            "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\WebViewModels\\WebViewModels.csproj": {
+              "projectPath": "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\WebViewModels\\WebViewModels.csproj"
             }
           }
         }

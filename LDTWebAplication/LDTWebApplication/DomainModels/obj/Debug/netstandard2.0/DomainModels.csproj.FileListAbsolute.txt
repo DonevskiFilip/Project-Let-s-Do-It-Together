@@ -7,3 +7,12 @@ C:\Users\User\Desktop\LDTWebAplication\LDTWebApplication\DomainModels\bin\Debug\
 C:\Users\User\Desktop\LDTWebAplication\LDTWebApplication\DomainModels\obj\Debug\netstandard2.0\DomainModels.dll
 C:\Users\User\Desktop\LDTWebAplication\LDTWebApplication\DomainModels\obj\Debug\netstandard2.0\DomainModels.pdb
 C:\Users\User\Desktop\LDTWebAplication\LDTWebApplication\DomainModels\obj\Debug\netstandard2.0\DomainModels.csprojAssemblyReference.cache
+C:\Users\User\Documents\ProjectLDT\LDTWebAplication\LDTWebApplication\DomainModels\bin\Debug\netstandard2.0\DomainModels.deps.json
+C:\Users\User\Documents\ProjectLDT\LDTWebAplication\LDTWebApplication\DomainModels\bin\Debug\netstandard2.0\DomainModels.dll
+C:\Users\User\Documents\ProjectLDT\LDTWebAplication\LDTWebApplication\DomainModels\bin\Debug\netstandard2.0\DomainModels.pdb
+C:\Users\User\Documents\ProjectLDT\LDTWebAplication\LDTWebApplication\DomainModels\obj\Debug\netstandard2.0\DomainModels.csprojAssemblyReference.cache
+C:\Users\User\Documents\ProjectLDT\LDTWebAplication\LDTWebApplication\DomainModels\obj\Debug\netstandard2.0\DomainModels.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\ProjectLDT\LDTWebAplication\LDTWebApplication\DomainModels\obj\Debug\netstandard2.0\DomainModels.AssemblyInfoInputs.cache
+C:\Users\User\Documents\ProjectLDT\LDTWebAplication\LDTWebApplication\DomainModels\obj\Debug\netstandard2.0\DomainModels.AssemblyInfo.cs
+C:\Users\User\Documents\ProjectLDT\LDTWebAplication\LDTWebApplication\DomainModels\obj\Debug\netstandard2.0\DomainModels.dll
+C:\Users\User\Documents\ProjectLDT\LDTWebAplication\LDTWebApplication\DomainModels\obj\Debug\netstandard2.0\DomainModels.pdb
