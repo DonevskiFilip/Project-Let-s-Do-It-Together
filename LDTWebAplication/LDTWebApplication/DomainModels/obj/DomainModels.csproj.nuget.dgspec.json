@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\DomainModels\\DomainModels.csproj": {}
+    "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\DomainModels\\DomainModels.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\DomainModels\\DomainModels.csproj": {
+    "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\DomainModels\\DomainModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\DomainModels\\DomainModels.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\DomainModels\\DomainModels.csproj",
         "projectName": "DomainModels",
-        "projectPath": "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\DomainModels\\DomainModels.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\DomainModels\\DomainModels.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Documents\\ProjectLDT\\LDTWebAplication\\LDTWebApplication\\DomainModels\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\LDTWebAplication\\LDTWebApplication\\DomainModels\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

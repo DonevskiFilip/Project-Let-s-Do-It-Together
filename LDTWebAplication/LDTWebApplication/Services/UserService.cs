@@ -31,9 +31,14 @@ namespace Services
             return _mapper.Map<UserViewModel>(user);
         }
 
-        public void LogInUser(LogInViewModel user)
+        public UserViewModel LogInUser(LogInViewModel user)
         {
-            throw new NotImplementedException();
+            var LogInUser = _userRepo.GetByUsername(user.Username);
+            if(LogInUser == null || LogInUser.Password != user.Password)
+            {
+                throw new Exception("Check Your username or password");
+            }
+                return _mapper.Map<UserViewModel>(LogInUser);
         }
 
         public void LogOutUser()
@@ -41,9 +46,19 @@ namespace Services
             throw new NotImplementedException();
         }
 
-        public void RegisterUser(RegisterViewModel user)
+        public void RegisterUser(RegisterViewModel registerUser)
         {
-            throw new NotImplementedException();
+            if(_userRepo.GetByUsername(registerUser.Username) != null)
+            {
+                throw new Exception("We have account with this username");
+            }
+            if(registerUser.Password != registerUser.ConfirmePassword)
+            {
+                throw new Exception("Your password does not match!");
+            }
+
+            User newUser = _mapper.Map<User>(registerUser);
+            _userRepo.Create(newUser);
         }
     }
 }

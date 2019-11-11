@@ -15,6 +15,8 @@ namespace Services.Helpers
                 .ReverseMap();
             CreateMap<Event, EventViewModel>()
                 .ReverseMap();
+            CreateMap<RegisterViewModel, User>()
+                .ReverseMap();
                 
         }
     }

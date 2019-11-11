@@ -16,6 +16,22 @@ namespace LDTWebApp.Controllers
         {
             _userService = userService;
         }
+
+        [HttpGet]
+        public IActionResult LogInUser()
+        {
+            return View(new LogInViewModel());
+        }
+        [HttpPost]
+        public IActionResult LogInUser(LogInViewModel user)
+        {
+            var LogedInUser = _userService.LogInUser(user);
+            return RedirectToAction("UserProfilePage", LogedInUser);
+        }
+        public IActionResult UserProfilePage(UserViewModel user)
+        {
+            return View(user);
+        }
         [HttpGet]
         public IActionResult RegisterUser()
         {
@@ -31,5 +47,6 @@ namespace LDTWebApp.Controllers
         {
             return View(_userService.GetAllUsers());
         }
+
     }
 }
